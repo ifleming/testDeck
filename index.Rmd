@@ -1,26 +1,64 @@
 ---
-title       : Test deck
-subtitle    : 
-author      : 
-job         : 
+title       : Developing Data Products Presentation
+subtitle    : US States Data
+author      : Ian Fleming
+job         : Student
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
 ---
 
-## Read-And-Delete
+## US States Data
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+This App allows the user to examine data about US States through histograms
 
---- .class #id 
+The data can be examined by the following regions which can be selected by the user:
 
-## Slide 2
+- Northeast
+- South
+- North Central
+- West
 
-```{r, fig.height=5, fig.width=5}
-plot(1 : 10, 1 : 10)
+---
+
+## Examination of Different Measures
+
+The different measurements that can be examined are:
+
+- Population
+- Income
+- Illiteracy rates
+- Life Expectancy
+- Number of Murders
+- High School Graduates
+- Frost
+- Area
+
+The next two slides provide examples of histograms that can be displayed
+
+---
+
+## Populations in the Northeastern states
+
+```{r, fig.width=12,fig.height=8, echo=FALSE}
+
+      states <- cbind(state.x77,as.character(state.region))
+      data.ne <- subset(states,states[,9]=="Northeast")
+      hist(as.numeric(data.ne[,"Population"]), breaks=4, col="gray", border="blue", main="", xlab="Population")
 ```
+
+---
+
+## Life Expectancy in the Western states
+
+```{r, fig.width=7,fig.height=6, echo=FALSE}
+
+      states <- cbind(state.x77,as.character(state.region))
+      data.w <- subset(states,states[,9]=="West")
+      hist(as.numeric(data.w[,"Life Exp"]), breaks=4, col="gray", border="blue", main="", xlab="Life Expectancy")
+```
+
 
